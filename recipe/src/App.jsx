@@ -21,6 +21,44 @@ export default function App() {
   return (
     <div className="container">
       <h1>🥗 Recipe Finder</h1>
+      pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Gokul79618/hostel.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                // If your project files are inside a folder named 'hos', keep this
+                // Otherwise, remove the dir('hos') wrapper
+                dir('hos') {
+                    bat '"C:\\Program Files\\nodejs\\npm.cmd" install'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('hos') {
+                    bat '"C:\\Program Files\\nodejs\\npm.cmd" run build'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ React project built successfully!"
+        }
+        failure {
+            echo "❌ Build failed!"
+        }
+    }
+}
 
       <input
         type="text"
