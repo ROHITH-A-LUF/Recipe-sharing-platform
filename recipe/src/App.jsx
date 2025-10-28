@@ -21,6 +21,9 @@ export default function App() {
   return (
     <div className="container">
       <h1>🥗 Recipe Finder</h1>
+      ||
+      ||
+      |||
       pipeline {
     agent any
 
@@ -59,6 +62,8 @@ export default function App() {
         }
     }
 }
+|||
+      ||||
 
       <input
         type="text"
